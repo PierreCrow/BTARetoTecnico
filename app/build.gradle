@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -11,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.movistar.tgestiona"
+        applicationId "bta.rectotecnico.cartas"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1

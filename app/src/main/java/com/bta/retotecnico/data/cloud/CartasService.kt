@@ -7,17 +7,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class CartasService @Inject constructor(private val api: DataServiceCartasApiClientWS) {
-
     suspend fun consultaEstado(
-    ): Result<ConsultaEstadoJuegoCloudResponse> {
+    ): ConsultaEstadoJuegoCloudResponse {
         return withContext(Dispatchers.IO) {
             val response = api.consultaEstadoJuego()
-            response.onSuccess {
-                response
-            }.onFailure {
-                it.message
-            }
+            response.body()!!
         }
     }
-
 }

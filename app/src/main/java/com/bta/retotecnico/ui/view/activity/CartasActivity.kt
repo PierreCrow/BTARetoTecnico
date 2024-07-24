@@ -38,25 +38,20 @@ class CartasActivity : AppCompatActivity() {
     var loading: TransparentProgressDialog? = null
     var className = "CartasActivity"
     var estadoJuego: Int = Constans.ESTADOS_JUEGO.CARTAS_VOLTEADAS
-
     var listaEstadosJuego: List<Int>? = null
     var regionLocalizacion: String = ""
-
     val PERMISSION_ID = 42
     lateinit var mFusedLocationClient: FusedLocationProviderClient
     var latitud: String = ""
     var longitud: String = ""
-
     var carta1Mostrada: Boolean = false
     var carta2Mostrada: Boolean = false
     var carta3Mostrada: Boolean = false
     var carta4Mostrada: Boolean = false
-
     var click1: Boolean = false
     var click2: Boolean = false
     var click3: Boolean = false
     var click4: Boolean = false
-
     var carta1 = ""
     var carta2 = ""
     var carta3 = ""
@@ -89,7 +84,6 @@ class CartasActivity : AppCompatActivity() {
         asignarCartas()
     }
 
-
     private fun asignarCartas() {
         Collections.shuffle(listaCartas);
         carta1 = listaCartas!![0]
@@ -98,14 +92,12 @@ class CartasActivity : AppCompatActivity() {
         carta4 = listaCartas!![3]
     }
 
-
     private fun clickListener() {
 
         binding.btnConsultaEstadoServidor.setOnClickListener {
             asignarCartas()
             cartasVolteadasReset()
-            //  consultaEstadoServidor()
-            pruebaSinConexionApi()
+            consultaEstadoServidor()
         }
 
         binding.ivCartaUno.setOnClickListener {
@@ -249,14 +241,16 @@ class CartasActivity : AppCompatActivity() {
             muestraCartas(Constans.ESTADOS_JUEGO.CARTAS_VOLTEADAS)
         }
 
-        binding.btnEnviarEstadoServidor.setOnClickListener {
-            Toast.makeText(this, "Estado enviado", Toast.LENGTH_SHORT).show()
+        binding.btnConsultaEstadoAleatorio.setOnClickListener {
+            asignarCartas()
+            cartasVolteadasReset()
+            consultaEstadoAleatorio()
         }
 
     }
 
 
-    private fun pruebaSinConexionApi() {
+    private fun consultaEstadoAleatorio() {
         listaEstadosJuego = listOf(
             Constans.ESTADOS_JUEGO.CARTAS_VOLTEADAS,
             Constans.ESTADOS_JUEGO.PARES_ENCONTRADOS,
@@ -372,10 +366,21 @@ class CartasActivity : AppCompatActivity() {
         })
 
         cartasViewModel.cartaState.observe(this, Observer {
+            if (it.toString().contains(Constans.ERROR.SUCCESS)) {
+            } else {
+                if (it.toString().contains(Constans.ERROR.FAILURE)) {
+                    Log.e(className, Constans.ERROR.ERROR)
+                    Toast.makeText(this, Constans.ERROR.ERROR, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+        cartasViewModel.responseConsultaEstado.observe(this, Observer {
             if (it != null) {
-                muestraCartas(estadoJuego)
+                muestraCartas(it.estado)
             } else {
                 Log.e(className, Constans.ERROR.ERROR)
+                Toast.makeText(this, Constans.ERROR.ERROR, Toast.LENGTH_SHORT).show()
             }
         })
     }

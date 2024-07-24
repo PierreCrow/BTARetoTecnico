@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BTA_Reto_Tecnico.app.unitTest.iml" />
     </modules>
   </component>
 </project>
