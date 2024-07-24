@@ -18,11 +18,10 @@ DOCUMENTACIÓN RETO TÉCNICO
 - [CÓDIGO] :  Desarrollado en Kotlin usando XML con "Constraint layout"
 
 
-- [CONSUMO DE API] :  Se está usando Retrofit y OkHttp para manejar los llamados al api.
-  Hay 2 apis :
+- [CONSUMO DE API] :  Se está usando Retrofit y OkHttp para manejar los llamados al api y consumir el estado del juego. Hay 2 apis :
   1. Uno es el que está consumiendo actualmente por el app (api fue publicado en Firebase ya que no cuento con un servidor para la publicación).
   2. El otro es el que hice en .net y el cual se encuentra en el siguiente enlace como proyecto ya que la publicación solo la hice en mi localhost.
-     Enlace : 
+     Enlace : https://github.com/PierreCrow/api_estado_juego
                
 
 - [SERVICIOS DE UBICACIÓN] : Se está usando Play Services Location para capturar la ubicación del usuario. Cada vez que se encuentra la ubicación, se muestra la latitud, longitud y el nombre de la región concatenados en un campo de texto.
